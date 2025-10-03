@@ -5,7 +5,6 @@ import {
   TextInput,
   Switch,
   StyleSheet,
-  Alert,
   ScrollView,
   Platform,
   Pressable,
@@ -30,27 +29,8 @@ export default function App() {
   }>(null);
 
   function validarCampos() {
-    if (!nome.trim()) {
-      Alert.alert('Erro', 'O nome é obrigatório.');
-      return;
-    }
-
     const idadeNum = parseInt(idade);
-    if (!idade || isNaN(idadeNum)) {
-      Alert.alert('Erro', 'A idade deve ser um número válido.');
-      return;
-    }
-
-    if (idadeNum < 18) {
-      Alert.alert('Erro', 'Você deve ter 18 anos ou mais.');
-      return;
-    }
-
-    if (!sexo) {
-      Alert.alert('Erro', 'Selecione o sexo.');
-      return;
-    }
-
+  
     const resumo = `
       Nome: ${nome}
       Idade: ${idadeNum}
@@ -58,9 +38,7 @@ export default function App() {
       Limite: R$ ${limite.toFixed(2)}
       Estudante: ${estudante ? 'Sim' : 'Não'}
     `;
-
-    Alert.alert('Conta criada com sucesso!', resumo.trim());
-
+  
     setDadosConfirmados({
       nome,
       idade,
